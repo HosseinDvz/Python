@@ -14,7 +14,7 @@ generalization capability of our model in relation to the model complexity and s
   ## Manual Implementation of Gradient Descent (GD)
   
   Gradient Descent is probably the most famous optimization algorithm and the back bone of many other optimization algorithms. Here, I manually implemented this algorithm.
-To understand how Gradient Descent works, go this link (min 53). (https://www.youtube.com/watch?v=qSTHZvN8hzs). <br/>
+To understand how Gradient Descent works, go this link (min 53).<br/> (https://www.youtube.com/watch?v=qSTHZvN8hzs). <br/>
   
 The main problem in implementing the GD is taking the drivative of loss function. The loss function here is Mean Square Error (MSE). I have used a very simple and creative idea to take the derivative. 
 The function we are going to fit to our data is a polynomial with degree d (do not confuse degree with dimention):<br/>

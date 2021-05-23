@@ -42,7 +42,7 @@ def grad_matrix(x,d):
 ```
 <br/> d is degree of the model which is one of the user's input and x is our data. I have implemented Gradient Descent, Stochastic Gradient Descent(SGD) and Mini Batch Gradient Descent. the x will be different in any of this methods. GD uses all data in each iteration, mini batch GD uses a batch of data (the size of the batch is one of the user's inputs) and SGD uses just one data point in each iteration. So, the most accurate models is GD , then mini batch GD and the fastest and least accurate one is SGD for the fixed number of iterations for all optimization algorithms. You will see how MSE changes at any of these algorithms. Choosing between optimization algorithms depends on the situations.                                
                            
-  To be contiued ....
+  *To be contiued ....*
                         
  
  

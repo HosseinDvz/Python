@@ -1,4 +1,4 @@
- # Regressionssss
+ # Regression
  
  In this project we are going to explore the fitting and generalization of regression models via simulation whitout using Python libraries. Here, we can see how changing the paramters of our regression model (namely, degree of the polynomial)  , changing the the number of data and changing the quality of data (by adding noise) can affect the result.
  

@@ -15,7 +15,7 @@ generalization capability of our model in relation to the model complexity, samp
   Gradient Descent is probably the most famous optimization algorithm and the backbone of many other optimization algorithms. Here, I manually implemented this algorithm.
 To understand how Gradient Descent works, go this link (min 53).<br/> (https://www.youtube.com/watch?v=qSTHZvN8hzs). <br/>
   
-The main problem in implementing the GD is taking the derivative of the loss function. The loss function here is Mean Square Error (MSE). I have used a very simple and creative idea to take the derivative. 
+The main problem in implementing the GD is taking the derivative of the loss function. The loss function here is Mean Square Error (MSE). I have used a very simple and creative idea to take the derivative. Mamula implementation of GD for Neural Networks would be more complicated. 
 The function we are going to fit our data is a polynomial with degree d :<br/>
   
                                           <p align="center">**Y=a0 + a1X + a2X^2 + ...+ adX^d** <br/>
@@ -41,10 +41,11 @@ def grad_matrix(x,d):
      X_grad_b = np.c_[np.ones((len(x),1)),X_grad]
 
 ```
-<br/> d is the degree of the model which is one of the user's inputs and x is our data. I have implemented Gradient Descent, Stochastic Gradient Descent(SGD), and Mini Batch Gradient Descent. the "x" will be different in any of these methods. GD uses all data in each iteration, mini-batch GD uses a batch of data (the size of the batch is one of the user's inputs) and SGD uses just one data point in each iteration. So, the most accurate algorithm is GD, then mini-batch GD, and the fastest and least accurate one is SGD for the fixed number of iterations for all optimization algorithms. You will see how MSE changes at any of these algorithms. Choosing between optimization algorithms depends on the different factors. <br/>
+<br/> d is the degree of the model which is one of the user's inputs and x is our data. I have implemented Gradient Descent, Stochastic Gradient Descent(SGD), and Mini Batch Gradient Descent. the "x" will be different in any of these methods. GD uses all data in each iteration, mini-batch GD uses a batch of data (the size of the batch is one of the user's inputs) and SGD uses just one data point in each iteration. So, the most accurate algorithm is GD, then mini-batch GD, and the fastest and least accurate one is SGD for the fixed number of iterations for all optimization algorithms. You will see how MSE will react to each algorithm. Choosing between optimization algorithms depends on the different factors. <br/>
                                            
 When you run the code, It will ask you to provide inputs for different parameters. By playing around with them, you will find a clear understanding of basic concepts in Machine Learning like overfitting and regularizing. For example, to see how regularizer (the regularizer here is Weight Decay(WD)) will help to reduce in-sample (E_in in the codes) or out of sample errors, choose a high variance for noise (Z) and run an experiment without WD and an experiment with WD (obviously other parameters should be constant).<br/>
-                                        
+                         
+    
  
                                         
   

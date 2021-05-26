@@ -21,8 +21,8 @@ The function we are going to fit our data is a polynomial with degree d :<br/>
                                           <p align="center">**Y=a0 + a1X + a2X^2 + ...+ adX^d** <br/>
                                          
 (i.e The above equation is not MSE formula, It is part of MSE and the part we need to take its derivative).<br/>
-                                           We are going to find (a0,a1,...,ad) so we need to take the derivative with respect to (a0,a1,...,ad)  which all of them are degree 1. therefore, their derivative would be their coefficients X,X^2, ..., X^d. The following fuction does this job in the code and provide the deraivative matrix: <br/>
-It was possible to use Pytorch for this purpose but I tried to make the code as simple as possible and using simple solutions.
+                                           We are going to find (a0,a1,...,ad) so we need to take the derivative with respect to (a0,a1,...,ad)  which all of them are degree 1. therefore, their derivative would be their coefficients X,X^2, ..., X^d. It was possible to use Pytorch for this purpose but I tried to make the code as simple as possible and using simple solutions. The following fuction does this job in the code and provide the deraivative matrix: <br/>
+
                                          
                                          
 ```

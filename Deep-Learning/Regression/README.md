@@ -15,7 +15,7 @@ generalization capability of our model in relation to the model complexity, samp
   Gradient Descent is probably the most famous optimization algorithm and the backbone of many other optimization algorithms. Here, I manually implemented this algorithm.
 To understand how Gradient Descent works, go this link (min 53).<br/> (https://www.youtube.com/watch?v=qSTHZvN8hzs). <br/>
   
-The main problem in implementing the GD is taking the derivative of the loss function. The loss function here is Mean Square Error (MSE). I have used a very simple and creative idea to take the derivative. Mamula implementation of GD for Neural Networks would be more complicated. 
+The main problem in implementing the GD is taking the derivative of the loss function. The loss function here is Mean Square Error (MSE). I have used a very simple and creative idea to take the derivative. Manual implementation of GD for Neural Networks with multiple layers would be more complicated. 
 The function we are going to fit our data is a polynomial with degree d :<br/>
   
                                           <p align="center">**Y=a0 + a1X + a2X^2 + ...+ adX^d** <br/>

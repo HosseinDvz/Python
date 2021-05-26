@@ -42,11 +42,45 @@ def grad_matrix(x,d):
 
 ```
 <br/> d is the degree of the model which is one of the user's inputs and x is our data. I have implemented Gradient Descent, Stochastic Gradient Descent(SGD), and Mini Batch Gradient Descent. the "x" will be different in any of these methods. GD uses all data in each iteration, mini-batch GD uses a batch of data (the size of the batch is one of the user's inputs) and SGD uses just one data point in each iteration. So, the most accurate algorithm is GD, then mini-batch GD, and the fastest and least accurate one is SGD for the fixed number of iterations for all optimization algorithms. You will see how MSE will react to each algorithm. Choosing between optimization algorithms depends on the different factors. <br/>
-                                           
+                                                                     
 When you run the code, It will ask you to provide inputs for different parameters. By playing around with them, you will find a clear understanding of basic concepts in Machine Learning like overfitting and regularizing. For example, to see how regularizer (the regularizer here is Weight Decay(WD)) will help to reduce in-sample (E_in in the codes) or out of sample errors, choose a high variance for noise (Z) and run an experiment without WD and an experiment with WD (obviously other parameters should be constant).<br/>
                          
     
- 
+Here is the results for the following prameters:<br/>
+                                           
+Enter the number of training data point(integer): 200
+
+Enter the variance of the noise: .15
+
+Enter the model degree (integer): 6
+
+Enter the number of iteration(integer): 200
+
+Enter the learning rate: .4
+
+Enter the batch size for mini-batch GD(integer): 40
+
+do you want to apply weight decay?(y/n) n
+
+
+Gradient descent coeffients:  [[ 0.51174238 -1.91338345 -1.08639981  0.76928197  0.40052162  3.1839693 ]]
+MSE for grdient descent:  2942.232463702175
+
+
+Stochastic Gradient descent coeffients:  [[-0.54615669  0.52496001 -0.5362781   0.26935793 -0.50726072  2.18582534]]
+MSE for Stochastic Gradient descent:  9478.507569285512
+
+
+Mini batch Gradient Descent coeffients:  [[-0.06611876 -0.00718865 -0.79601411  0.20558643 -0.47178651  2.26552147]]
+MSE for Mini batch Gradient Descent:  6625.502686156475
+
+
+E_out for Gradient Descent(GD) for 1000 test data: 78617.751 
+E_out for Stochastic GD for 1000 test data: 242336.480
+E_out for mini GD for 1000 test data: 171081.840
+                                           
+             ![](Images/git.png)
+                                           
                                         
   
                            

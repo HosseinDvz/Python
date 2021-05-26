@@ -45,7 +45,7 @@ def grad_matrix(x,d):
                                                                      
 When you run the code, It will ask you to provide inputs for different parameters. By playing around with them, you will find a clear understanding of basic concepts in Machine Learning like overfitting and regularizing. For example, to see how regularizer (the regularizer here is Weight Decay(WD)) will help to reduce in-sample (E_in in the codes) or out of sample errors, choose a high variance for noise (Z) and run an experiment without WD and an experiment with WD (obviously other parameters should be constant).<br/>
                          
-    
+```    
 Here is the results for the following prameters:<br/>
                                            
 Enter the number of training data point(integer): 200
@@ -78,8 +78,9 @@ MSE for Mini batch Gradient Descent:  6625.502686156475
 E_out for Gradient Descent(GD) for 1000 test data: 78617.751 
 E_out for Stochastic GD for 1000 test data: 242336.480
 E_out for mini GD for 1000 test data: 171081.840
+```
                                            
-             ![](Images/git.png)
+ ![](images/git.png)
                                            
                                         
   

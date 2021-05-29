@@ -15,7 +15,7 @@ generalization capability of our model in relation to the model complexity, samp
   Gradient Descent is probably the most famous optimization algorithm and the backbone of many other optimization algorithms. Here, I manually implemented this algorithm.
 To understand how Gradient Descent works, go this link (min 53).<br/> (https://www.youtube.com/watch?v=qSTHZvN8hzs). <br/>
   
-The main problem in implementing the GD is taking the derivative of the loss function. The loss function here is Mean Square Error (MSE). I have used a very simple and creative idea to take the derivative. Manual implementation of GD for Neural Networks with multiple layers would be more complicated. 
+The main problem in implementing the GD is taking the derivative of the loss function. The loss function here is the Mean Square Error (MSE). I have used a very simple and creative idea to take the derivative. Manual implementation of GD for Neural Networks with multiple layers would be more complicated. 
 The function we are going to fit our data is a polynomial with degree d :<br/>
   
                                           <p align="center">**Y=a0 + a1X + a2X^2 + ...+ adX^d** <br/>
@@ -85,6 +85,17 @@ E_out for mini GD for 1000 test data: 171081.840
                                            
                                         
   
-                           
+ At the end, the program will ask you about running an experiment or not. There is a function in the codes that does the following: <br/>
+It takes as input the size N of training dataset, the degree d of the
+model polynomial and noise variance sigma^2, and does the following. For the given values of N,d and sigma^2, it
+loops over M trials (M is 50 in the codes), where each trial is defined
+as generating a training dataset of size N and noise variance sigma^2 (by calling getData) and then fitting the
+data to a polynomial of degree d (by calling fitData). The computed E_in and E_out are respectively averaged
+over the M trials, which are denoted by Ein_avg and Eout_avg. The obtained M polynomials over the M trials are
+also averaged. The function then generates another large dataset with noise variance sigma^2 and computes the
+average MSE for the dataset fitted to the average polynomial. This MSE will be denoted by E_bias. The
+function outputs E_in;E_out and E_bias. <br/>
+The experiment will be run over all combination of N = {2,5,10,20,50,100,200}, d = {0,1,2,...,20} and sigma^2 = {0.01, 0.1,1}. There is a function ,combination(), that stores all the combinations in a list. <br/>.
+                                           Finally, I provide some plots that summarize the results of the experiments and provide some insights.
  
  

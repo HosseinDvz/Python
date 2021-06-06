@@ -81,7 +81,7 @@ E_out for Stochastic GD for 1000 test data: 242336.480
 E_out for mini GD for 1000 test data: 171081.840
 ```
                                            
- ![](images/git.png)
+ <p align="center"><img src="images/git.png">
                                            
                                         
   
@@ -98,4 +98,7 @@ function outputs E_in;E_out and E_bias. <br/>
 The experiment will be run over all combination of N = {2,5,10,20,50,100,200}, d = {0,1,2,...,20} and sigma^2 = {0.01, 0.1,1}. There is a function ,combination(), that stores all the combinations in a list. <br/>.
                                            Finally, I provide some plots that summarize the results of the experiments and provide some insights.
  
+                                           
+                                           
+                                        <img width="460" height="300" src="https://github.com/HosseinDvz/Python/blob/main/Deep-Learning/Regression/images/git.png">
  

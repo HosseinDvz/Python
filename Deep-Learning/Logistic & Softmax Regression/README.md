@@ -25,7 +25,7 @@ We define the Cross Entropy Loss function:<br/>
      
  It can be shown that the derivative of loss function is:<br/>
   <p align="center"><img src="images/CrossLossDRV.png">
-        
+        SS
      
  Then, we update the weights for GD and mini batch GD: 
    <p align="center"><img src="images/WupGd.png">

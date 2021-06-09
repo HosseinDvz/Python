@@ -78,7 +78,9 @@ clf = LogisticRegression(penalty='none',
                          multi_class='multinomial').fit(X_train_final, y_train)
 ```
 
+After training our model, we have ten equations (one for each neuron) each of them has 784 weights. They will be saved in an array of shape 10*784. There is plot in the code that shows which weights are important (bigger) for what number. Bigger weights are in blue.
+      
 
- 
+
 
  

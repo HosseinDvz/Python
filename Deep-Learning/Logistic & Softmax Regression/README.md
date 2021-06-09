@@ -52,5 +52,33 @@ We define the Cross Entropy Loss function:<br/>
    <p align="center"><img src="images/MultiLoss.bmp">
       
 
-        
-  
+ 
+  # Multinimial Logistic Regression Model in Python
+      
+ &nbsp;&nbsp; I used Keras library just to load MNIST dataset and sklearn library to implement multinimial logistic regression.
+  The MNIST database (Modified National Institute of Standards and Technology database) is a large database of handwritten digits that is commonly used for training various image processing systems. The database is also widely used for training and testing in the field of machine learning (Wiki). Each picture has 28 * 28 pixels. 
+   MNIST is one of the Keras datasets and we can easily load it. There are 70000 pictures of handwritten digits. Each of them are in the form of a 28 * 28 matrix (one number for each pixel range from 0 to 255. black is zero and white is 255). So the whole data set is an array of shape 70000 * 28 * 28. 
+
+In the code, first I devide the data into two sets, 60000 for training and 10000 for testing the final model. Then we flatten the data by transforming the array of size 60000 * 28 *28 into an array of size 60000 * 784 (i.e 28 * 28 = 784) and then normalizing it by deviding each number to 255.
+```
+ (X_train,y_train),(X_test, y_test) = mnist.load_data()
+classes = ['0', '1', '2','3', '4','5', '6', '7', '8', '9']
+nclasses = len(classes)
+X_train[0].shape
+#normalizing and flattening the data
+image_vector_size = 28*28
+X_train_final = X_train.reshape(X_train.shape[0], image_vector_size)/255.0
+X_test_final = X_test.reshape(X_test.shape[0], image_vector_size)/255.0
+ ```
+Then, the logistic regression model will be parametrized and trained. There are different parameters associated to the model like *penalty* (for regularizing) , *multi_calss* (To tell the model we have a binary or multiclass calssification), *solver* (the algorithm that train the model like "saga"; Stochastic Average Gradient Descent). Read the help for other parameters. There should be a harmony betweent the parameters of the model. For example you can not use 'liblinear' solver for multinomial regression. 
+
+```
+clf = LogisticRegression(penalty='none', 
+                         tol=0.05, solver= 'saga',
+                         multi_class='multinomial').fit(X_train_final, y_train)
+```
+
+
+ 
+
+ 

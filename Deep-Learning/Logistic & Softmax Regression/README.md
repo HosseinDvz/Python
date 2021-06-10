@@ -17,50 +17,60 @@ Now, we can define the logistic regression model: <br/>
 Let   <img src="images/HCond.png"> parametrized by:<br/>
  <p align="center"><img src="images/hypParam.png"><br/>
      
-*w* belongs to *R^m*, (m is the dimension of our data) and b is the bios. *wx + b* defines a hyperplane in *R^m*. For one side of it , *where wx + b > 0*, the assigned label will be 1, because *Sigmoid(wx + b) > 0.5*, and for the other side will be 0.
+<br/> 
+    
+*w* blongs to *R^m*, (m is the dimension of our data) and b is the bios. *wx + b* defines a hyperplane in *R^m*. For one side of it , *where wx + b > 0*, the assigned
+label will be 1, because *Sigmoid(wx + b) > 0.5*, and for the other side will be 0.
      
 We define the Cross Entropy Loss function:<br/>
  <p align="center"><img src="images/CrossEntLoss.png">
      
- We are going to find w:= argmin(L(w)),br/>
-     
- It can be shown that the derivative of loss function is:<br/>
+ <br/>
+
+We are going to find w:= argmin(L(w)),<br/>
+It can be shown that the derivative of loss function is:<br/>
   <p align="center"><img src="images/CrossLossDRV.png">
         
      
- Then, we update the weights for GD and mini batch GD: 
-   <p align="center"><img src="images/WupGd.png">
+     
+Then, we update the weights for GD and mini batch GD: 
+<p align="center"><img src="images/WupGd.png">
 
       
-  The Logistic Regression Model as a neural network when we are going to classify our data into two categories will be like this:
+The Logistic Regression Model as a neural network when we are going to classify our data into two categories will be like this:
      <p align="center"><img src="images/LogisticModel.png">
-
-## Multinomial Logistic Regression Model   
-        
-  &nbsp;&nbsp; In cases, we have more than two categories, For example, 10 classes, instead of Sigmoid, we use Soft-Max as activation function and our network will have 10 neurons - one neuron for each category - before the activation layer.
+## Multinomial Logistic Regression Model 
+<br/>        
+&nbsp;&nbsp;In cases, we have more than two categories, For example, 10 classes, instead of Sigmoid, we use Soft-Max as activation function and our network will have 10 neurons - one neuron for each category - before the activation layer.
    <p align="center"><img src="images/MultiReg.bmp">
 
       
-  Each neuron provides a hyperplane in R^k (k is the dimension of our data). when we apply data to the network, each neuron will return a number. Those numbers will pass through the Soft-Max to normalize the output of the network to a probability distribution. 
+Each neuron provides a hyperplane in R^k (k is the dimension of our data). when we apply data to the network, each neuron will return a number. Those numbers will pass through the Soft-Max to normalize the output of the network to a probability distribution. 
        
-  The Soft-Max function, model and the loss function are as following:
+The Soft-Max function, model and the loss function are as following:<br/>
     
-   <p align="center"><img src="images/SoftMaxFunc.bmp">   
-      
- Here, q(i) is the probability of belonging to class i, and s(i) is the output of the neuron assigned to class i.
-      
-   <p align="center"><img src="images/MultiModel.bmp">
-   <p align="center"><img src="images/MultiLoss.bmp">
+ <p align="center"><img src="images/SoftMaxFunc.bmp">   
       
 
- 
-  # Multinimial Logistic Regression Model in Python
+Here, q(i) is the probability of belonging to class i, and s(i) is the output of the neuron assigned to class i.
       
- &nbsp;&nbsp; I used Keras library just to load MNIST dataset and *sklearn* library to implement multinomial logistic regression.
+   <p align="center"><img src="images/MultiModel.bmp">
+   <p align="center"><img src="images/MultiLoss.bmp"><br/>
+
+      
+      
+      
+      
+      
+      
+      
+
+# Multinimial Logistic Regression in Python
+&nbsp;&nbsp;I used Keras library just to load MNIST dataset and *sklearn* library to implement multinomial logistic regression.
   The MNIST database (Modified National Institute of Standards and Technology database) is a large database of handwritten digits that is commonly used for training various image processing systems. The database is also widely used for training and testing in the field of machine learning (Wiki). Each picture has 28 * 28 pixels. 
    MNIST is one of the Keras datasets and we can easily load it. There are 70000 pictures of handwritten digits. Each of them is in the form of a 28 * 28 matrix (one number for each pixel range from 0 to 255. black is zero and white is 255). So the whole data set is an array of shape 70000 * 28 * 28. 
 
-In the code, first I divide the data into two sets, 60000 for training and 10000 for testing the final model. Then we flatten the data by transforming the array of size 60000 * 28 *28 into an array of size 60000 * 784 (i.e 28 * 28 = 784) and then normalizing it by dividing each number to 255.
+&nbsp;&nbsp;In the code, first I divide the data into two sets, 60000 for training and 10000 for testing the final model. Then we flatten the data by transforming the array of size 60000 * 28 *28 into an array of size 60000 * 784 (i.e 28 * 28 = 784) and then normalizing it by dividing each number to 255. <br/>
 ```
  (X_train,y_train),(X_test, y_test) = mnist.load_data()
 classes = ['0', '1', '2','3', '4','5', '6', '7', '8', '9']
@@ -70,16 +80,23 @@ X_train[0].shape
 image_vector_size = 28*28
 X_train_final = X_train.reshape(X_train.shape[0], image_vector_size)/255.0
 X_test_final = X_test.reshape(X_test.shape[0], image_vector_size)/255.0
- ```
-Then, the logistic regression model will be parameterized and trained. There are different parameters associated with the model like *penalty* (for regularizing), *multi_calss* (To tell the model we have a binary or multiclass classification), *solver* (the algorithm that trains the model like "saga"; Stochastic Average Gradient Descent). Read the help for other parameters. There should be a harmony between the parameters of the model. For example, you can not use 'liblinear' solver for multinomial regression. 
+```
+<br/>
+      
 
+Then, the logistic regression model will be parameterized and trained. There are different parameters associated with the model like *penalty* (for regularizing),
+*multi_calss* (To tell the model we have a binary or multiclass classification), *solver* (the algorithm that trains the model like "saga"; Stochastic Average Gradient
+Descent). Read the help for other parameters. There should be a harmony between the parameters of the model. For example, you can not use 'liblinear' solver for
+multinomial regression. 
 ```
 clf = LogisticRegression(penalty='none', 
                          tol=0.05, solver= 'saga',
                          multi_class='multinomial').fit(X_train_final, y_train)
 ```
 
-After training our model, we have ten equations (one for each neuron) each of them has 784 weights. They will be saved in an array of shape 10*784. There is a plot in the code that shows which weights are important (bigger) for what number. Bigger weights are in blue.
+After training our model, we have ten equations (one for each neuron) each of them has 784 weights. They will be saved in an array of shape 10*784. There is a plot in
+the code that shows which weights are important (bigger) for what number. Bigger weights are in blue.
       
-Then, I choose a sample to show how the model works and plot the results. finally, I compute the accuracy of the model by testing the model on test data. The accuracy was 92.68. you may find a better combination of model parameters and have higher accuracy. 
+Then, I choose a sample to show how the model works and plot the results. finally, I compute the accuracy of the model by testing the model on test data. The accuracy
+was 92.68. you may find a better combination of model parameters and achieve higher accuracy. 
  

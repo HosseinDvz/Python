@@ -65,7 +65,7 @@ Here, q(i) is the probability of belonging to class i, and s(i) is the output of
       
       
 
-# Multinimial Logistic Regression in Python
+# Multinomial Logistic Regression in Python
 &nbsp;&nbsp;I used Keras library just to load MNIST dataset and *sklearn* library to implement multinomial logistic regression.
   The MNIST database (Modified National Institute of Standards and Technology database) is a large database of handwritten digits that is commonly used for training various image processing systems. The database is also widely used for training and testing in the field of machine learning (Wiki). Each picture has 28 * 28 pixels. 
    MNIST is one of the Keras datasets and we can easily load it. There are 70000 pictures of handwritten digits. Each of them is in the form of a 28 * 28 matrix (one number for each pixel range from 0 to 255. black is zero and white is 255). So the whole data set is an array of shape 70000 * 28 * 28. 

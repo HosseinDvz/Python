@@ -66,7 +66,7 @@ Here, q(i) is the probability of belonging to class i, and s(i) is the output of
       
 
 # Multinomial Logistic Regression in Python
-&nbsp;&nbsp;I used Keras library just to load MNIST dataset and *sklearn* library to implement multinomial logistic regression.
+&nbsp;&nbsp;I imported Keras library just to load MNIST dataset and *sklearn* library to implement multinomial logistic regression.
   The MNIST database (Modified National Institute of Standards and Technology database) is a large database of handwritten digits that is commonly used for training various image processing systems. The database is also widely used for training and testing in the field of machine learning (Wiki). Each picture has 28 * 28 pixels. 
    MNIST is one of the Keras datasets and we can easily load it. There are 70000 pictures of handwritten digits. Each of them is in the form of a 28 * 28 matrix (one number for each pixel range from 0 to 255. black is zero and white is 255). So the whole data set is an array of shape 70000 * 28 * 28. 
 
@@ -99,4 +99,12 @@ the code that shows which weights are important (bigger) for what number. Bigger
       
 Then, I choose a sample to show how the model works and plot the results. finally, I compute the accuracy of the model by testing the model on test data. The accuracy
 was 92.68. you may find a better combination of model parameters and achieve higher accuracy. 
+
+  It is possible to apply the cifar10 dataset by some changes in the code. The CIFAR-10 dataset (Canadian Institute For Advanced Research) is a collection of images that are commonly used to train machine learning and computer vision algorithms. It is one of the most widely used datasets for machine learning research.[1][2] The CIFAR-10 dataset contains 60,000 32x32 color images in 10 different classes.[3] The 10 different classes represent airplanes, cars, birds, cats, deer, dogs, frogs, horses, ships, and trucks. There are 6,000 images of each class. (Wikipedia). The numeric form of each image is a 32*32*3 matrix. Assume we stack three matrix of dimension 32*32 for each image. We have three matrix because of the main three colors; Red, Green and blue. Each matrix shows, for example, the distribution of red color in each pixel of image. Therefore, we flatten the each image in a vector of size 32*32*3. that is the only part that needs to be changed in the MNIST code. <br/>
+  Soft-Max Regression Model is not very powerful on classifying color images.The model accuracy would be around 42%. To see how model works, I choose the image no 1235 from test dataset which is a dog and ask model to assign a label to it. the following plot shows how model think about that image.
+      
+  <p align="center"><img src="images/cifar10-dog.png"><br/>  
+      
+  
+      
  

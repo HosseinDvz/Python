@@ -105,6 +105,6 @@ was 92.68. you may find a better combination of model parameters and achieve hig
       
   <p align="center"><img src="images/Cifar10-dog.png"><br/>  
       
-  Even though the model finally says it is the image of a dog but is assigns high probabilities to deer, bird and horse which not good. This plot will give us a sense why we got 42 percent accuracy. Convolutional Neural Network (CNN) is the best model in classifying color images and I will introduce it in another section.
+  Even though the model finally says it is the image of a dog but is assigns high probabilities to deer, bird and horse which is not good. This plot will give us a sense why we got 42 percent accuracy. Convolutional Neural Network (CNN) is the best model in classifying color images and I will introduce it in another section.
       
  

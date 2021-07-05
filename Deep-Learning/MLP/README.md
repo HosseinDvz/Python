@@ -16,14 +16,14 @@ A neural network is merely a computation graph representing the compositions of 
   
   &nbsp;&nbsp;This activation function is the default activation function recommended for use with most feedforward neural networks. Applying this function to the output of a linear transformation yields a nonlinear transformation. However, the function remains very close to linear, in the sense that is a piecewise linear function with two linear pieces. Because rectified linear units are nearly linear, they preserve many of the properties that make linear models easy to optimize with gradientbased methods. They also preserve many of the properties that make linear models generalize well.(Deep Learning, Goodfellow). <br/>
   
- g(z) = max{0,z} + a * min{0,z} is the generalization of ReLU and depend on the values of a, we have different functions:
-  - Leaky ReLU (another commonly used activation function) :very small a
+ **g(z) = max{0,z} + a * min{0,z}** is the generalization of ReLU and depend on the values of a, we have different functions:
+  - #### Leaky ReLU (another commonly used activation function) :very small a
  <p align="center"><img src = "images/LeakyReLU.jpg"><br/>
    
    
- - Absolute value function : a = -1 <br/>
+ - #### Absolute value function : a = -1 <br/>
    
- - Prametric ReLU (PReLU) : learnable a <br/>
+ - #### Prametric ReLU (PReLU) : learnable a <br/>
 ## Implementing MLP in Python
    &nbsp;&nbsp;I used *keras* library to implement MLP and MNIST dataset. To see how architecture of our network affects the result, I designed three experiments. In the first experiment, the number of layers (depth) of the network will change and width of the network remains constant. In the second experiment, the number of neurons in a MLP with one hidden layer will change and in the third exeriment, both width and depth of the network are changing. I used ReLU for hidden layer activation function (you can also get similar results with sigmoid), Stochastic Gradient Descent as optimization algorithm. The loss function is CrosEntropy loss which was explained in [Logistic Regression](https://github.com/HosseinDvz/Python/tree/main/Deep-Learning/Logistic%20%26%20Softmax%20Regression). <br/>
   

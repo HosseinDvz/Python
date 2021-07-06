@@ -46,7 +46,7 @@ A neural network is merely a computation graph representing the compositions of 
    
   ## Analysing the experiments
 &nbsp;&nbsp;In the experiment_1 I try to show the effect of depth of the network on the results. I start with a MLP with one hidden layer and 256 neurons. The results shows 89 percent accuracy on the test dataset. Then, another hidden layer with 256 neurons will be added to the model and accuracy will dramatically decrease to around 10 percent. It does not mean increasing the depth always produces the bad results but in our case, it was not a good idea to increase the depth. 
- In experiment_2, the width of the network will change. By increasing the width of network, the accuracy of the model increases. 
+ In experiment_2, the width of the network to increases from 32 to 2048. By increasing the width of network, the accuracy of the model increases but it has a limit and if we continue this, we eventually overfit and the accuracy decreases as a result of poor generalization.
 In the experiment_3, the width and depth increases and the result will be printed. <br/>
  
   &nbsp;&nbsp;In each experiment, the model summary shows the number of layers, neurons per layers and the total number of trainable parameters. <br/>

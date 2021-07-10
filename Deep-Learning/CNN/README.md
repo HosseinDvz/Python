@@ -26,7 +26,7 @@ isn’t any theoretical characterization of its behaviour.
    <p align="center"><img src = "images/MaxPooling.jpg"><br/>
     
 ## CNN in Python
-    In t
+    
     
     
     

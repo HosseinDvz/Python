@@ -25,7 +25,8 @@ isn’t any theoretical characterization of its behaviour.
    On a 2D feature map, pooling is usually done over a p x p window and with stride p. That is, a window of size p x p hops on the feature map with step size p, and the maximum element in each window is extracted to form a reduced feature map. As we go deeper to the network, the number of filters increases but the width and height of the feature maps decrese.
    <p align="center"><img src = "images/MaxPooling.jpg"><br/>
     
-
+## CNN in Python
+    In t
     
     
     

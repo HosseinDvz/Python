@@ -19,7 +19,7 @@ In the context of Deep Learning, when we talk about the *Convolution* of f and g
  <p align="center"><img src = "images/ConvLayer.webp"><br/>
   The numbers in the filters are what network updates and learns during the learning process along with the weights of MLP after flattening. It starts with random numbers for each filter. The number of channles in the output layer is equal to the number of filters and dimensions of the output array (each feature map) depends on input dimensions, filter size and how filters stride over the input; in above example if stride = 2 then the output will be a 2x2 array. The following picture shows the full architecture of a CNN. A picture of 28x28x1 convolved to n1 (number of filters(kernel)) feature maps of size 24 x 24 (width of image - (width of kernel - 1) : 28 - (5 - 1) = 24). This formula works when stride = 1. 
   
-Sometimes, we want the output of a convolution layer i.e, our feature map, has the same size as input. In this case we use **same padding**. We pad input by zero and increase the dimension of it. See the following picture: <br/>
+Sometimes, we want the output of a convolution layer i.e, our feature map, has the same size as input. In this case we use **same padding**. We pad input by zero and increase the its dimension. See the following picture: <br/>
 <p align="center"><img src = "images/Pad.gif"><br/>
  &nbsp;&nbsp;The input and output has the same 5x5 dimensions. By this every pixel will equally contribute to feature map.<br/>
 <br/>

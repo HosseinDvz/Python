@@ -18,16 +18,26 @@ In the context of Deep Learning, when we talk about the *Convolution* of f and g
  &nbsp;&nbsp;There are three benefits in filtering the image before passing it to a MLP. Firstly, it decreases the dimensions of the input to the MLP. Each colored image in CIFAR10 has 32x32x3 dimentions and after flattening it becomes an input of  size 3072 for a single image which is too many for MLP. Max pooling does the main job is dimension reduction. Secondly, CNNs do not ignore the vicinity of two pixels.  In a normal network, we would have connected every pixel in the input image to a neuron in the next layer. In doing so, we would not have taken advantage of the fact that pixels in an image are close together for a reason and have special meaning. The following image shows how the input convolves. Thirdly, we just send the important parts of our picture to MLP for classification not the whole picture. For example, our pictures may have white background, we do not send a lot of useless "255" to our network which won't cotribute to classification.(zero is taken to be black, and 255 is taken to be white) <br/>
  <p align="center"><img src = "images/ConvLayer.webp"><br/>
   The numbers in the filters are what network updates and learns during the learning process along with the weights of MLP after flattening. It starts with random numbers for each filter. The number of channles in the output layer is equal to the number of filters and dimensions of the output array (each feature map) depends on input dimensions, filter size and how filters stride over the input; in above example if stride = 2 then the output will be a 2x2 array. The following picture shows the full architecture of a CNN. A picture of 28x28x1 convolved to n1 (number of filters(kernel)) feature maps of size 24 x 24 (width of image - (width of kernel - 1) : 28 - (5 - 1) = 24). This formula works when stride = 1. 
-  <p align="center"><img src = "images/FullCNN.jpeg"><br/>
-   
-   Pooling refers to reducing a feature representation by (usually nonlinear) down sampling. The most commonly used pooling is max pooling, although there
-isn’t any theoretical characterization of its behaviour.
-   On a 2D feature map, pooling is usually done over a p x p window and with stride p. That is, a window of size p x p hops on the feature map with step size p, and the maximum element in each window is extracted to form a reduced feature map. As we go deeper to the network, the number of filters increases but the width and height of the feature maps decrese.
+  
+Sometimes, we want the output of a convolution layer i.e, our feature map, has the same size as input. In this case we use **same padding**. We pad input by zero and increase the dimension of it. See the following picture: <br/>
+<p align="center"><img src = "images/Pad.gif"><br/>
+ &nbsp;&nbsp;The input and output has the same 5x5 dimensions. By this every pixel will equally contribute to feature map.<br/>
+<br/>
+**Pooling** refers to reducing a feature representation by (usually nonlinear) down sampling. The most commonly used pooling is max pooling, although there
+isn’t any theoretical characterization of its behaviour. Average pooing is another pooling.
+On a 2D feature map, pooling is usually done over a p x p window and with stride p. That is, a window of size p x p hops on the feature map with step size p, and the maximum element in each window is extracted to form a reduced feature map. As we go deeper to the network, the number of filters increases but the width and height of the feature maps decrese.
    <p align="center"><img src = "images/MaxPooling.jpg"><br/>
+ 
+ 
+ This image shows a complete arcitecture of a CNN.  
+ <p align="center"><img src = "images/FullCNN.jpeg"><br/>  
+  
+  
     
-## CNN in Python
-    
-    
-    
+# CNN in Python
+&nbsp;&nbsp;There are many CNN-based models like LeNet-5 (1998), AlexNet (2012), VGGNet (2014), GoogleNet (2014), ResNet (2015) and DenseNet (2016). in the code I tried to implement VGGNet (2014), GoogleNet (2014) and ResNet (2015) on CIFAR10 dataset.
+   ## VGGNet
+&nbsp;&nbsp;The VGG convolutional neural network architecture, named for the Visual Geometry Group at Oxford. The architecture was described in the 2014 paper titled [“Very Deep Convolutional Networks for Large-Scale Image Recognition”](https://arxiv.org/abs/1409.1556). The key innovation in this architecture was the definition and repetition of what we will refer to as VGG-blocks.We can generalize the specification of a VGG-block as one or more convolutional layers with the same number of filters and a filter size of 3×3, a stride of 1×1, same padding  so the output size is the same as the input size for each filter, and the use of a rectified linear activation function. These layers are then followed by a max pooling layer with a size of 2×2 and a stride of the same dimensions. <br/>
+ In the codes, Iwe do not exactly follow the arcitecture that was described in the above article because those architectures are for large-scaled image like 224x224. Even though a large-scaled images causes to model to have many parameters and hard to train, but I think low-scaled images like CIFAR10 has its own challenge of training because some those pictures are hard to be recognized even by human because of the quality. 
     
     

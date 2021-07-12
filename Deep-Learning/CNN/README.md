@@ -12,24 +12,28 @@ In the context of Deep Learning, when we talk about the *Convolution* of f and g
  
  ## Main Idea behind the CNNs
  &nbsp;&nbsp;The idea is similar to filtering the signals; for example, when we pass a signal through a lowpass system(filter), it rejects the high frequencies and keeps low frequencies in the signal. <br/>
-   In the context of CNN, the function f would be our input, the function g will be our filter. We are going to have a couple of filters (Kernel). Each kernel extract a feature in the picture. For example one kernel may find horizonal lines and one kernel the vertical lines or a specific color. Those features will be combined and passed to a MLP and then classified. Actually, what CNNs do in recognizing a picture is very similar to what we do; first we identify the important parts of the picture and then decide what it is. <br/>
+   In the context of CNN, the function f would be our input, the function g will be our filter. We are going to have a couple of filters (Kernel). Each kernel extract a feature in the picture. For example one kernel may find horizonal lines and one kernel the vertical lines or a specific color. Those features will be combined and passed to a MLP for classification. Actually, what CNNs do in recognizing a picture is very similar to what we do; first we identify the important parts of the picture and then decide what it is. <br/>
    
    
  &nbsp;&nbsp;There are three benefits in filtering the image before passing it to a MLP. Firstly, it decreases the dimensions of the input to the MLP. Each colored image in CIFAR10 has 32x32x3 dimentions and after flattening it becomes an input of  size 3072 for a single image which is too many for MLP. Max pooling does the main job is dimension reduction. Secondly, CNNs do not ignore the vicinity of two pixels.  In a normal network, we would have connected every pixel in the input image to a neuron in the next layer. In doing so, we would not have taken advantage of the fact that pixels in an image are close together for a reason and have special meaning. The following image shows how the input convolves. Thirdly, we just send the important parts of our picture to MLP for classification not the whole picture. For example, our pictures may have white background, we do not send a lot of useless "255" to our network which won't cotribute to classification.(zero is taken to be black, and 255 is taken to be white) <br/>
  <p align="center"><img src = "images/ConvLayer.webp"><br/>
-  The numbers in the filters are what network updates and learns during the learning process along with the weights of MLP after flattening. It starts with random numbers for each filter. The number of channles in the output layer is equal to the number of filters and dimensions of the output array (each feature map) depends on input dimensions, filter size and how filters stride over the input; in above example if stride = 2 then the output will be a 2x2 array. The following picture shows the full architecture of a CNN. A picture of 28x28x1 convolved to n1 (number of filters(kernel)) feature maps of size 24 x 24 (width of image - (width of kernel - 1) : 28 - (5 - 1) = 24). This formula works when stride = 1. 
+  The numbers in the filters are what network updates and learns during the learning process along with the weights of MLP after flattening. We do not assign any filter for any feature, the CNN does this for us. It starts with random numbers for each filter. The number of channles in the output layer is equal to the number of filters and dimensions of the output array (each feature map) depends on input dimensions, filter size and how filters stride over the input; in above example if stride = 2 then the output will be a 2x2 array. 
   
-Sometimes, we want the output of a convolution layer i.e, our feature map, has the same size as input. In this case we use **same padding**. We pad input by zero and increase the its dimension. See the following picture: <br/>
-<p align="center"><img src = "images/Pad.gif"><br/>
- &nbsp;&nbsp;The input and output has the same 5x5 dimensions. By this every pixel will equally contribute to feature map.<br/>
+Sometimes, we want the output of a convolution layer i.e, our feature map, has the same size as input. In this case we use **same padding**. As you see in the following picture we add zeros to input: <br/>
+<p align="center"><img src = "images/pad-same.png"><br/>
+ 
+ 
+ &nbsp;&nbsp;The original input before padding and output has the same 4x4 dimensions. By padding every pixel will equally contribute to feature map (without padding, the border numbers contribute less than the numbers in the midddle of input) .<br/>
 <br/>
-**Pooling** refers to reducing a feature representation by (usually nonlinear) down sampling. The most commonly used pooling is max pooling, although there
-isn’t any theoretical characterization of its behaviour. Average pooing is another pooling.
+
+ 
+ **Pooling** refers to reducing a feature representation by (usually nonlinear) down sampling. The most commonly used pooling is max pooling, although there
+isn’t any theoretical characterization of its behaviour. Average pooling is another pooling method.
 On a 2D feature map, pooling is usually done over a p x p window and with stride p. That is, a window of size p x p hops on the feature map with step size p, and the maximum element in each window is extracted to form a reduced feature map. As we go deeper to the network, the number of filters increases but the width and height of the feature maps decrese.
    <p align="center"><img src = "images/MaxPooling.jpg"><br/>
  
- 
- This image shows a complete arcitecture of a CNN.  
+ The following picture shows the full architecture of a CNN. A picture of 28x28x1 convolved to n1 (number of filters(kernel)) feature maps of size 24 x 24 (width of image - (width of kernel - 1) : 28 - (5 - 1) = 24). This formula works when stride = 1. 
+  
  <p align="center"><img src = "images/FullCNN.jpeg"><br/>  
   
   
@@ -37,7 +41,22 @@ On a 2D feature map, pooling is usually done over a p x p window and with stride
 # CNN in Python
 &nbsp;&nbsp;There are many CNN-based models like LeNet-5 (1998), AlexNet (2012), VGGNet (2014), GoogleNet (2014), ResNet (2015) and DenseNet (2016). in the code I tried to implement VGGNet (2014), GoogleNet (2014) and ResNet (2015) on CIFAR10 dataset.
    ## VGGNet
-&nbsp;&nbsp;The VGG convolutional neural network architecture, named for the Visual Geometry Group at Oxford. The architecture was described in the 2014 paper titled [“Very Deep Convolutional Networks for Large-Scale Image Recognition”](https://arxiv.org/abs/1409.1556). The key innovation in this architecture was the definition and repetition of what we will refer to as VGG-blocks.We can generalize the specification of a VGG-block as one or more convolutional layers with the same number of filters and a filter size of 3×3, a stride of 1×1, same padding  so the output size is the same as the input size for each filter, and the use of a rectified linear activation function. These layers are then followed by a max pooling layer with a size of 2×2 and a stride of the same dimensions. <br/>
- In the codes, Iwe do not exactly follow the arcitecture that was described in the above article because those architectures are for large-scaled image like 224x224. Even though a large-scaled images causes to model to have many parameters and hard to train, but I think low-scaled images like CIFAR10 has its own challenge of training because some those pictures are hard to be recognized even by human because of the quality. 
+&nbsp;&nbsp;The VGG convolutional neural network architecture, named for the Visual Geometry Group at Oxford. The architecture was described in the 2014 paper titled [“Very Deep Convolutional Networks for Large-Scale Image Recognition”](https://arxiv.org/abs/1409.1556). The key innovation in this architecture was the definition and repetition of what we will refer to as VGG-blocks.We can generalize the specification of a VGG-block as one or more convolutional layers with the same number of filters and a filter size of 3×3, a stride of 1×1, same padding  so the output size is the same as the input size for each filter, and the use of a rectified linear activation function. These layers are then followed by a max pooling layer with a size of 2×2 and a stride of the same dimensions.<br/>
+ In the codes, we do not exactly follow the arcitecture that was described in the above article because those architectures are for large-scaled image like 224x224. Even though a large-scaled image causes the model to have many parameters and hard to train, but I think low-scaled images like CIFAR10 has its own challenge of training because some of those pictures are hard to be recognized even by human because of the quality. <br/>
+  Our VGG has the following architecture:<br/>
+ <p align="center"><img src = "images/VGG.png"><br/> 
+  
+  
+  Each two convolution layer plus max-pooling, produces a VGG block so our network has three VGG blocks with one dense layer of 128 neurons. 
+  
+ ## GoogleNet
+  While we are designing a network with convolutional layers, before the Dense layer, we need to decise about:
+  - whether we want to go with a Pooling or Convolutional operation;<br/>
+  - the size and number of filters to be passed through the output of the previous layer.
+  
+  
+  
+  
+  
     
     

@@ -15,7 +15,7 @@ In the context of Deep Learning, when we talk about the *Convolution* of f and g
    In the context of CNN, the function f would be our input, the function g will be our filter. We are going to have a couple of filters (Kernel). Each kernel extract a feature in the picture. For example one kernel may find horizonal lines and one kernel the vertical lines or a specific color. Those features will be combined and passed to a MLP for classification. Actually, what CNNs do in recognizing a picture is very similar to what we do; first we identify the important parts of the picture and then decide what it is. <br/>
    
    
- &nbsp;&nbsp;There are three benefits in filtering the image before passing it to a MLP. Firstly, it decreases the dimensions of the input to the MLP. Each colored image in CIFAR10 has 32x32x3 dimentions and after flattening it becomes an input of  size 3072 for a single image which is too many for MLP. Max pooling does the main job is dimension reduction. Secondly, CNNs do not ignore the vicinity of two pixels.  In a normal network, we would have connected every pixel in the input image to a neuron in the next layer. In doing so, we would not have taken advantage of the fact that pixels in an image are close together for a reason and have special meaning. The following image shows how the input convolves. Thirdly, we just send the important parts of our picture to MLP for classification not the whole picture. For example, our pictures may have white background, we do not send a lot of useless "255" to our network which won't cotribute to classification.(zero is taken to be black, and 255 is taken to be white) <br/>
+ &nbsp;&nbsp;There are two benefits in filtering the image before passing it to a MLP. Firstly, CNNs do not ignore the vicinity of two pixels.  In a normal network, we would have connected every pixel in the input image to a neuron in the next layer. In doing so, we would not have taken advantage of the fact that pixels in an image are close together for a reason and have special meaning. The following image shows how the input convolves. Secondly, we just send the important parts of our picture to MLP for classification not the whole picture. For example, our pictures may have white background, we do not send a lot of useless "255" to our network which won't cotribute to classification.(zero is taken to be black, and 255 is taken to be white) <br/>
  <p align="center"><img src = "images/ConvLayer.webp"><br/>
   The numbers in the filters are what network updates and learns during the learning process along with the weights of MLP after flattening. We do not assign any filter for any feature, the CNN does this for us. It starts with random numbers for each filter. The number of channles in the output layer is equal to the number of filters and dimensions of the output array (each feature map) depends on input dimensions, filter size and how filters stride over the input; in above example if stride = 2 then the output will be a 2x2 array. 
   
@@ -52,7 +52,12 @@ On a 2D feature map, pooling is usually done over a p x p window and with stride
  ## GoogleNet
   While we are designing a network with convolutional layers, before the Dense layer, we need to decise about:
   - whether we want to go with a Pooling or Convolutional operation;<br/>
-  - the size and number of filters to be passed through the output of the previous layer.
+  - the size and number of filters to be passed through the output of the previous layer.<br/>
+  what if we were able to try our different options all together in one single layer? To answer this question, Google researchers developed a new architecture of layer called Inception. The inception module was described and used in the GoogLeNet model in the 2015 paper by Christian Szegedy, et al. titled [“Going Deeper with Convolutions.”](https://www.cv-foundation.org/openaccess/content_cvpr_2015/html/Szegedy_Going_Deeper_With_2015_CVPR_paper.html). <br/>
+  In each VGG block, we stack convolution layers but here, in each inception module, we use covolution layers with different kernel sizes in parallel. This is a very simple and powerful architectural unit that allows the model to learn not only parallel filters of the same size, but parallel filters of differing sizes, allowing learning at multiple scales.The convolution ayers with filters of size 1x1, act as a tool for increase or decrease the number of feature maps.<br/>
+ Here is the arcitecture of or GoogleNet network
+ 
+ 
   
   
   

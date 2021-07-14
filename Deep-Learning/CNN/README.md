@@ -1,6 +1,5 @@
 # Convolutional Neural Networks
- First we try to understand what is convolution:
- ## Definition:
+ ## Convolution Definition:
  &nbsp;&nbsp;In mathematics (in particular, functional analysis), convolution is a mathematical operation on two functions (f and g) that produces a third function (f*g) that expresses how the shape of one is modified by the other. The term convolution refers to both the result function and to the process of computing it.<br/>
  
  <p align="center"><img src = "images/ConvFormula.jpg"><br/>

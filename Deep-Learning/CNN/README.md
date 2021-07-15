@@ -46,25 +46,39 @@ On a 2D feature map, pooling is usually done over a p x p window and with stride
  <p align="center"><img src = "images/VGG.png"><br/> 
   
   
-  Each two convolution layer plus max-pooling, produces a VGG block so our network has three VGG blocks with one dense layer of 128 neurons. 
-  
+  Each two convolution layer plus max-pooling, produces a VGG block, so our network has three VGG blocks with one dense layer of 128 neurons.
+  ```
+  Epoch 10/20
+45000/45000 [==============================] - 68s 2ms/step - loss: 0.4061 - accuracy: 0.8866 - val_loss: 0.7703 - val_accuracy: 0.7884
+Epoch 20/20
+45000/45000 [==============================] - 68s 2ms/step - loss: 0.2186 - accuracy: 0.9600 - val_loss: 1.1139 - val_accuracy: 0.7854
+10000/10000 [==============================] - 7s 682us/step
+model accuracy=  [1.172061269903183, 0.7728999853134155]
+```
+The total number of trainable parameters was 550,570 and I could get %77 accuracy on test dataset which is good.<br/>
+ The above results show model starts to memorize the training dataset  after iteration 10 (overfitting - look at the gap between in-sample (%96) and out of sample acurac (%78)) which means we can stop training the model on iteration number 10 without decreasing the model accuracy. 
  ## GoogleNet
   While we are designing a network with convolutional layers, before the Dense layer, we need to decise about:
   - whether we want to go with a Pooling or Convolutional operation;<br/>
   - the size and number of filters to be passed through the output of the previous layer.<br/>
   what if we were able to try our different options all together in one single layer? To answer this question, Google researchers developed a new architecture of layer called Inception. The inception module was described and used in the GoogLeNet model in the 2015 paper by Christian Szegedy, et al. titled [“Going Deeper with Convolutions.”](https://www.cv-foundation.org/openaccess/content_cvpr_2015/html/Szegedy_Going_Deeper_With_2015_CVPR_paper.html). <br/>
-  In each VGG block, we stack convolution layers but here, in each inception module, we use covolution layers with different kernel sizes in parallel. This is a very simple and powerful architectural unit that allows the model to learn not only parallel filters of the same size, but parallel filters of differing sizes, allowing learning at multiple scales.The convolution ayers with filters of size 1x1, act as a tool for increase or decrease the number of feature maps.<br/>
+  In each VGG block, we stack convolution layers but here, in each inception module, we use covolution layers with different kernel sizes in parallel. This is a very simple and powerful architectural unit that allows the model to learn not only parallel filters of the same size, but parallel filters of differing sizes, allowing learning at multiple scales.The convolution layers with filters of size 1x1, act as a tool for increase or decrease the number of feature maps.<br/>
  Here is the arcitecture of or GoogleNet network: <br/>
   <p align="center"><img src = "images/GoogelNet.png"><br/> 
   As you see in the above picture, we send the input to diferent convolution layers with differnt number of filters and then concatenate the output of them. The convolution layers work in parallel. In our example we have just ne inception module and I could get 70% percent accuracy on CIFAR10 dataset. Here is the results of last iteration: <br/>
-   Epoch 20/20
+ 
+```
+   
+Epoch 20/20
 
 45000/45000 [==============================] - 206s 5ms/step - loss: 0.5045 - accuracy: 0.8198 - val_loss: 0.9683 - val_accuracy: 0.7018
 
 10000/10000 [==============================] - 18s 2ms/step
+model accuracy=  [0.9846970697402954, 0.6901000142097473]<br/>
 
-The following numbers are the results of test dataset. The second number in the following list is portion of true predictions on test dataset. 
-   model accuracy=  [0.9846970697402954, 0.6901000142097473]<br/>
+```
+  The second number in the list is portion of true predictions on test dataset. 
+   
  The total number of trainable parameter was: 2,486,506
 
    

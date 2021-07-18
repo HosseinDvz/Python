@@ -56,7 +56,7 @@ Epoch 20/20
 model accuracy=  [1.172061269903183, 0.7728999853134155]
 ```
 The total number of trainable parameters was 550,570 and I could get %77 accuracy on test dataset which is good.<br/>
- The above results show model starts to memorize the training dataset  after iteration 10 (overfitting - look at the gap between in-sample (%96) and out of sample acurac (%78)) which means we can stop training the model on iteration number 10 without decreasing the model accuracy. 
+ The above results show model starts to memorize the training dataset  after iteration 10 (overfitting - look at the gap between in-sample (%96) and out of sample acurac (%78)) which means we can stop training the model on iteration number 10 without decreasing the model accuracy. To avoid overfitting, we can do some preprocessing on the input images and instead of using constant learning rate, update the learning and make it smaler when we are close to the optimum. 
  ## GoogleNet
   While we are designing a network with convolutional layers, before the Dense layer, we need to decise about:
   - whether we want to go with a Pooling or Convolutional operation;<br/>

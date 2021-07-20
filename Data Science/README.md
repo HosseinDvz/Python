@@ -31,9 +31,59 @@ We just needed all unique words in our train dataset and we could do it in anoth
 The function **load_glove(word_index)** takes our train dataset unique words, finds that words in the *glove.6B.100d.txt* which is already converted to a dictunary (embeddings_index). The keys in this dictionary are words and the values are arrays of 100 numbers. This function return a matrix of numbers with 21481 x 100 dimensions.  (21481 is the number of unique words in our courpos and may change if you run the code.). we use this matrix to train our models. <br/>
 
 # Text Classification with Deep Neural Network Models
+&nbsp;&nbsp; I will compare two famous deep learning models namely, LSTM and CNN, in the text classification job.
 ## Text classification with CNN in Pytorch
 
 &nbsp;&nbsp; As we know, CNNs are originally invented for computer vision.  With the same idea as in computer vision, CNN model is used as an feature extractor that encodes semantic features of sentences before these features are fed to a classifier.One of the earliest applications of CNN in Natural Language Processing was introduced in the paper [Convolutional Neural Networks for Sentence Classification (Kim, 2014)](https://arxiv.org/abs/1408.5882). I have already explained about CNN [here](https://github.com/HosseinDvz/Python/tree/main/Deep-Learning/CNN). For image classification, each kernel extracts a feature like a color or a line in a picture but in the context of text classification, kernels extract semantics from the text. See the following picture from https://towardsdatascience.com/:
+
+<p align="center"><img src="images/CNNtext.jpeg"><br/>
+  
+ First, each input sentence go through the already provided embedding matrix and converted into numbers. i.e The relevant vectore for each word in the sentence will be found and extracted from the embedding matrix and put together to privide the input matrix. In our case, each row of the matrix has 100 columns and the number of rows depend on the number of words which are 200 here. Then they will go through differen parallel (like GoogleNet) one dimensional convolutional layers with different kernel sizes. For this job, we do not need to stack convolutional layers and one layer would be enough.
+  
+ In our CNN, we have three different kernel size of 1,2,3. the number of each kernels is 30. These paramaters can be changed and I suggest you to change them and see the results. Here is the results after 8 epochs:<br/>
+  ```
+  Epoch 3/8 	 loss=22.4788 	 val_loss=15.1590  	 val_acc=0.9800  	 time=14.37s
+  Epoch 8/8 	 loss=4.8529 	 val_loss=3.9497  	 val_acc=0.9940  	 time=13.79s
+  ```
+  and here is the confusion matrix:<br/>
+  <p align="center"><img src="images/ConfusionCnn.png"><br/>
+    
+ 
+ &nbsp;&nbsp; As we see, CNN achieved pretty good results in our text classification task.<br/>
+  In clustering segment, when I try to analyse the input, we will see why model can not achieve %100 accuracy.
+ 
+ ## Long-Short Term Memory (LSTM)
+ 
+  
+ 
+  
+ 
+  
+  
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,10 +1,10 @@
 # Classification
 ## Authorship
 &nbsp;&nbsp; The art and science of discriminating between writing styles of authors by identifying the characteristics of the persona of the authors and examining articles authored by them is called Authorship Analysis.<br/>
-Here we are doing the authorship by examining the articles written by that author. <br/>
+Here we are going to do authorship by examining the articles written by that author. <br/>
 
 ## Data Preperation
-&nbsp;&nbsp; I chose 6 books at randomm from 'gutenberg' in **nltk** library. It contains 18 books of twelve authors.Then I created a dataframe of two columns as training dataset. The dataframe includes 18000 rows of 400 characters, 3000 rows for each author. Each row contains 400 characters. The starting character will be selected at random and the 399 subsequent characters will be added.
+&nbsp;&nbsp; I chose 6 books at randomm from 'gutenberg' in **nltk** library. It contains 18 books of twelve authors.Then I created a dataframe of two columns (Text, Authors(labels)) as training dataset.  The dataframe includes 18000 rows of 400 characters, 3000 rows for each author. Each row contains 400 characters. The starting character will be selected at random and the 399 subsequent characters will be added.
 
 ## Data Cleaning
 &nbsp;&nbsp;I defined some function to clean the text before applying it to the model. This part could be one of the most time-cosuming and challenging job in data processing. Fortunately working with Latin scripts is not as hard as scrips like Persian. In our case because the texts are stories and poems, I decided touse the following functions for data cleansing. <br/>
@@ -38,9 +38,9 @@ The function **load_glove(word_index)** takes our train dataset unique words, fi
 
 <p align="center"><img src="images/CNNtext.jpeg"><br/>
   
- First, each input sentence go through the already provided embedding matrix and converted into numbers. i.e The relevant vectore for each word in the sentence will be found and extracted from the embedding matrix and put together to privide the input matrix. In our case, each row of the matrix has 100 columns and the number of rows depend on the number of words which are 200 here. Then they will go through differen parallel (like GoogleNet) one dimensional convolutional layers with different kernel sizes. For this job, we do not need to stack convolutional layers and one layer would be enough.
-  
- In our CNN, we have three different kernel size of 1,2,3. the number of each kernels is 30. These paramaters can be changed and I suggest you to change them and see the results. Here is the results after 8 epochs:<br/>
+ First, each input sentence go through the already provided embedding matrix and converted into numbers. i.e The relevant vectore for each word in the sentence will be found and extracted from the embedding matrix and put together to privide the input matrix. In our case, each row of the matrix has 100 columns and the number of rows depend on the number of words which are 200 here. Then they will go through differen parallel (like GoogleNet) one dimensional convolutional layers with different kernel sizes. For this job, we do not need to stack convolutional layers and one layer would be enough.<br/>
+ 1-D convolutional layers usually use in Natural Language Processing (NLP). We just specify the number of rows in Conv1D kernels and the number of columns would be the the number of columns. In our case would be 100 (each word represented with a vector of 100 numbers or dimensions)). That is why the outpou of the convolutional layers is just one row of numbers. It makes sense because each row in our input is one specific word and we do not want to cut it. The difference between Conv1D and Conv2D, other than the size of their kernels, is that Conv1d is only capturing one of the two correlations (either vertical or horizontal), thus yielding much more limited information. It would be enough in the case of text analyzing because we just care about the vertical correlations which shows the order of the words. On the other hand, Conv2D manage to capture this influence in both spatial directions, horizontal and vertical which is good for image classification.
+ In our CNN, we have three different kernel size of 1x100,2x100,3x100. the number of each kernels is 30. These paramaters can be changed and I suggest you to change them and see the results. Here is the results after 8 epochs:<br/>
   ```
   Epoch 3/8 	 loss=22.4788 	 val_loss=15.1590  	 val_acc=0.9800  	 time=14.37s
   Epoch 8/8 	 loss=4.8529 	 val_loss=3.9497  	 val_acc=0.9940  	 time=13.79s
@@ -53,15 +53,12 @@ The function **load_glove(word_index)** takes our train dataset unique words, fi
   In clustering segment, when I try to analyse the input, we will see why model can not achieve %100 accuracy.
  
  ## Long-Short Term Memory (LSTM)
- 
-  
- 
-  
- 
-  
-  
- 
 
+ 
+  
+ 
+  
+ 
 
 
 

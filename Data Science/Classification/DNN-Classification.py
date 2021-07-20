@@ -17,7 +17,7 @@ from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 import nltk
 import matplotlib.pyplot as plt
-from torchsummary import summary
+
 
 embed_size = 100 # how big is each word vector
 max_features = 120000 # how many unique words to use (i.e num rows in embedding vector)

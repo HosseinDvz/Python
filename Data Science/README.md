@@ -30,8 +30,10 @@ We just needed all unique words in our train dataset and we could do it in anoth
 
 The function **load_glove(word_index)** takes our train dataset unique words, finds that words in the *glove.6B.100d.txt* which is already converted to a dictunary (embeddings_index). The keys in this dictionary are words and the values are arrays of 100 numbers. This function return a matrix of numbers with 21481 x 100 dimensions.  (21481 is the number of unique words in our courpos and may change if you run the code.). we use this matrix to train our models. <br/>
 
-# Text classification with CNN in Pytorch
-  Our CNN well have 
+# Text Classification with Deep Neural Network Models
+## Text classification with CNN in Pytorch
+
+&nbsp;&nbsp; As we know, CNNs are originally invented for computer vision.  With the same idea as in computer vision, CNN model is used as an feature extractor that encodes semantic features of sentences before these features are fed to a classifier.One of the earliest applications of CNN in Natural Language Processing was introduced in the paper [Convolutional Neural Networks for Sentence Classification (Kim, 2014)](https://arxiv.org/abs/1408.5882). I have already explained about CNN [here](https://github.com/HosseinDvz/Python/tree/main/Deep-Learning/CNN). For image classification, each kernel extracts a feature like a color or a line in a picture but in the context of text classification, kernels extract semantics from the text. See the following picture from https://towardsdatascience.com/:
 
 
 

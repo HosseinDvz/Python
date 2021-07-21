@@ -19,7 +19,7 @@ Let   <img src="images/HCond.png"> parametrized by:<br/>
      
 <br/> 
     
-*w* blongs to *R^m*, (m is the dimension of our data) and b is the bios. *wx + b* defines a hyperplane in *R^m*. For one side of it , *where wx + b > 0*, the assigned
+*w* belongs to *R^m*, (m is the dimension of our data) and b is the bios. *wx + b* defines a hyperplane in *R^m*. For one side of it , *where wx + b > 0*, the assigned
 label will be 1, because *Sigmoid(wx + b) > 0.5*, and for the other side will be 0.
      
 We define the Cross Entropy Loss function:<br/>
@@ -47,7 +47,7 @@ The Logistic Regression Model as a neural network when we are going to classify 
       
 Each neuron provides a hyperplane in R^k (k is the dimension of our data). when we apply data to the network, each neuron will return a number. Those numbers will pass through the Soft-Max to normalize the output of the network to a probability distribution. 
        
-The Soft-Max function, model and the loss function are as following:<br/>
+The Soft-Max function, model, and loss function are as following:<br/>
     
  <p align="center"><img src="images/SoftMaxFunc.bmp">   
       
@@ -100,11 +100,11 @@ the code that shows which weights are important (bigger) for what number. Bigger
 Then, I choose a sample to show how the model works and plot the results. finally, I compute the accuracy of the model by testing the model on test data. The accuracy
 was 92.68. you may find a better combination of model parameters and achieve higher accuracy. 
 
-  It is possible to apply the cifar10 dataset by some changes in the code. The CIFAR-10 dataset (Canadian Institute For Advanced Research) is a collection of images that are commonly used to train machine learning and computer vision algorithms. It is one of the most widely used datasets for machine learning research.[1][2] The CIFAR-10 dataset contains 60,000 32x32 color images in 10 different classes.[3] The 10 different classes represent airplanes, cars, birds, cats, deer, dogs, frogs, horses, ships, and trucks. There are 6,000 images of each class. (Wikipedia). The numeric form of each image is a 32 * 32 * 3 matrix. Assume we stack three matrix of dimension 32 * 32 for each image. We have three matrixes because of the main three colors; Red, Green and blue. Each matrix shows, for example, the distribution of red color in the image. Therefore, we flatten the each image in a vector of size 32 * 32 * 3. that is the only part that needs to be changed in the MNIST code. <br/>
-  Soft-Max Regression Model is not very powerful on classifying color images.The model accuracy would be around 42%. To see how model works,in the codes, I choose the image no 1235 from test dataset which is a dog and ask model to assign a label to it. the following plot shows how model think about that image.
-      
+  It is possible to apply the cifar10 dataset by some changes in the code. The CIFAR-10 dataset (Canadian Institute For Advanced Research) is a collection of images that are commonly used to train machine learning and computer vision algorithms. It is one of the most widely used datasets for machine learning research.[1][2] The CIFAR-10 dataset contains 60,000 32x32 color images in 10 different classes.[3] The 10 different classes represent airplanes, cars, birds, cats, deer, dogs, frogs, horses, ships, and trucks. There are 6,000 images of each class. (Wikipedia). The numeric form of each image is a 32 * 32 * 3 matrix. Assume we stack three matrices of dimension 32 * 32 for each image. We have three matrixes because of the main three colors; Red, Green, and blue. Each matrix shows, for example, the distribution of red color in the image. Therefore, we flatten each image in a vector of size 32 * 32 * 3. that is the only part that needs to be changed in the MNIST code. <br/>
+  Soft-Max Regression Model is not very powerful in classifying color images. The model accuracy would be around 42%. To see how the model works, in the codes, I choose image no 1235 from the test dataset which is a dog and ask the model to assign a label to it. the following plot shows how the model thinks about that image.
   <p align="center"><img src="images/Cifar10-dog.png"><br/>  
       
-  Even though the model finally says it is the image of a dog but is assigns high probabilities to deer, bird and horse which is not good. This plot will give us a sense why we got 42 percent accuracy. Convolutional Neural Network (CNN) is the best model in classifying color images and I will introduce it in another section.
+  Even though the model finally says it is the image of a dog but it assigns high probabilities to deer, bird, and hors which is not good. This plot will give us a sense of why we got 42 percent accuracy. Convolutional Neural Network (CNN) is the best model in classifying color images and I will introduce it in another section.
+      
       
  

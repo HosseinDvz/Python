@@ -95,7 +95,7 @@ over the M trials, which are denoted by Ein_avg and Eout_avg. The obtained M pol
 also averaged. The function then generates another large dataset with noise variance sigma^2 and computes the
 average MSE for the dataset fitted to the average polynomial. This MSE will be denoted by E_bias. The
 function outputs E_in;E_out and E_bias. <br/>
-The experiment will be run over all combination of N = {2,5,10,20,50,100,200}, d = {0,1,2,...,20} and sigma^2 = {0.01, 0.1,1}. There is a function ,combination(), that stores all the combinations in a list. <br/>.
+The experiment will be run over all combination of N = {2,5,10,20,50,100,200}, d = {0,1,2,...,20} and sigma^2 = {0.01, 0.1,1}. There is a function ,combination(), that stores all the combinations in a list. This experiment shows the averaged model shows a better performance.  <br/>
 Finally, I provide some plots that summarize the results of the experiments and provide some insights.
                                            
                                            

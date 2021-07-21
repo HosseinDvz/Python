@@ -67,7 +67,7 @@ The function **load_glove(word_index)** takes our train dataset unique words, fi
     
 #### Causal System
     
-&nbsp;&nbsp; Recall a system is anything that takes an input signal x(t) and generates an output signal y(t), where, at each time t, both x(t) and y(t) can be vectors. A system is said to be **Causal** if at any time t >= 1, y(t) is independent of x(t+1), x(t+2), ... i.e, the output of the system only depends on the input at that time and the past, NOT the future (For online applications the system must be causal because future has not happened yet but for offline applications (like a recorded voice) the system can be non-causal). <br/>
+&nbsp;&nbsp; Recall a system is anything that takes an input signal x(t) and generates an output signal y(t), where, at each time t, both x(t) and y(t) can be vectors. A system is said to be **Causal** if at any time t >= 1, y(t) is independent of x(t+1), x(t+2), ... i.e, the output of the system only depends on the input at that time or the past, NOT the future (For online applications the system must be causal because future has not happened yet but for offline applications (like a recorded voice) the system can be non-causal). <br/>
 &nbsp;&nbsp; A fundamental result regarding causal systems is that in any causal system, there exists a notion of **state**. The state of a causal system is a variable s(t) (with t = 0, 1, 2,...) taking values in some space S(t), in terms of which the system can be completely characterized by:<br/>
     
 <p align="center"><img src="images/StateOutput.jpg"><br/>

@@ -74,7 +74,20 @@ The function **load_glove(word_index)** takes our train dataset unique words, fi
   
 
   
-  &nbsp;&nbsp; The first equation says that the state of the system at time t depends on its state at time t-1 and the input at time t. the second equation says the output of at time t depends on the state at time t and the input at time t.  
+  &nbsp;&nbsp; The first equation says that the state of the system at time *t* depends on its state at time *t-1* and the input at time *t*. the second equation says the output of at time *t* depends on the state at time *t* and the input at time *t*.  <br/>
+  
+  
+  
+  
+&nbsp;&nbsp; State serves as the memory of the system: s(t) contains all information in the system up to time (t) required for generating output y(t+1); y(t+2)... . In other words, the current state is a complete summary of the past, on which the future output depends. In reality, the state space S(t) usually can be made much smaller. Usually one always seeks to find the state-space representation in which the dimension of S(t) is as small as possible, i.e., finding a minimal state representation. We also wish that the state space S(t) stays unchanged with t. For causal systems that only process input sequences with finite lengths, say having lengths upper-bounded by L, this is always possible. In practice, we also like to work with time-invariant state-space representations, namely those in which S(t), F(t) and G(t) are independent of t. In summary we want to say that:  **When having input sequences with bounded lengths, any causal system can be expressed using a time-invariant state-space representation!.** <br/>
+ 
+  
+### Definition of Recurrent Neural Network
+
+ &nbsp;&nbsp; An recurrent neural network (RNN) is a time-invariant state-space representation of a causal system. The functions F and G take some parametric forms and are learned via training. An RNN can be drawn as a chain of recurrent units, as in the figure, where all units share the same (F,G).<br/>
+  
+<p align="center"><img src="images/RNN.jpg"><br/>
+
  
     
     

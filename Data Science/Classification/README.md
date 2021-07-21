@@ -52,4 +52,11 @@ The function **load_glove(word_index)** takes our train dataset unique words, fi
   In clustering segment, when I try to analyse the input, we will see why model can not achieve %100 accuracy.
  
  ## Long-Short Term Memory (LSTM)
+    
+&nbsp;&nbsp; LSTM belongs to the family of Recurrent Neural Networks (RNN) which are famous for their applications in analysing the time series. Machine learning tasks involving time series includes:<br/>
+   - Processing sequence data (e.g., sentiment analysis in NLP)
+   - Generating sequence data (e.g., as natural language generation in NLP)
+   - Learning the representation of sequence data (e.g., word embedding in NLP)
+   - Combination of above (e.g., machine translation, document summarization, chatbot)
+    
 

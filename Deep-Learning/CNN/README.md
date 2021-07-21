@@ -60,7 +60,7 @@ Epoch 20/20
 10000/10000 [==============================] - 7s 682us/step
 model accuracy=  [1.172061269903183, 0.7728999853134155]
 ```
-&nbsp;&nbsp; The total number of trainable parameters was 550,570 and I could get %77 accuracies on the test dataset which is good.<br/>
+&nbsp;&nbsp; The total number of trainable parameters was 550,570 and I could get %77 accuracy on the test dataset which is good.<br/>
 The above results show model starts to memorize the training dataset after iteration 10 (overfitting - look at the gap between in-sample (%96) and out of sample accuracy (%78)) which means we can stop training the model on iteration number 10 without decreasing the model accuracy. To avoid overfitting, we can do some preprocessing on the input images and instead of using a constant learning rate, update the learning and make it smaller when we are close to the optimum. 
  ## GoogleNet
 While we are designing a network with convolutional layers, before the Dense layer, we need to decide about:<br/>

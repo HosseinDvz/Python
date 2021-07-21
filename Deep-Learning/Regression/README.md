@@ -1,7 +1,7 @@
 
 # Regression
  
-   In this project we are going to explore the fitting and generalization of regression models via simulation without using Python libraries. Here, we can see how changing the parameters of our regression model (namely, degree of the polynomial), the number of data points, the quality of data (by adding noise) or adding a regularizer can affect the results.<br/>
+   In this project, we are going to explore the fitting and generalization of regression models via simulation without using Python libraries. Here, we can see how changing the parameters of our regression model (namely, degree of the polynomial), the number of data points, the quality of data (by adding noise), or adding a regularizer can affect the results.<br/>
  
    Suppose that X and Y are both real-valued random variables, where X takes value in (0, 1) and Y depends on X according to: <br/>                                          <p align="center">**Y = cos(2*pi*X) + Z**<br/>
   
@@ -21,7 +21,7 @@ The function we are going to fit our data is a polynomial with degree d :<br/>
                                           <p align="center">**Y=a0 + a1X + a2X^2 + ...+ adX^d** <br/>
                                          
 (i.e The above equation is not MSE formula, It is part of MSE and the part we need to take its derivative).<br/>
-                                           We are going to find (a0,a1,...,ad) so we need to take the derivative with respect to (a0,a1,...,ad)  which all of them are degree 1. therefore, their derivative would be their coefficients X,X^2, ..., X^d. It was possible to use Pytorch for this purpose but I tried to make the code as simple as possible and using simple solutions. The following fuction does this job in the code and provide the deraivative matrix: <br/>
+                                           We are going to find (a0,a1,...,ad) so we need to take the derivative with respect to (a0,a1,...,ad)  which all of them are degree 1. therefore, their derivative would be their coefficients X,X^2, ..., X^d. It was possible to use Pytorch for this purpose but I tried to make the code as simple as possible and using simple solutions. The following function does this job in the code and provide the derivative matrix: <br/>
 
                                          
                                          
@@ -85,9 +85,9 @@ E_out for mini GD for 1000 test data: 171081.840
                                            
                                         
   
- At the end, the program will ask you about running an experiment or not. There is a function in the codes that does the following: <br/>
-It takes as input the size N of training dataset, the degree d of the
-model polynomial and noise variance sigma^2, and does the following. For the given values of N,d and sigma^2, it
+ In the end, the program will ask you about running an experiment or not. There is a function in the codes that does the following: <br/>
+It takes as input the size N of the training dataset, the degree d of the
+model, and noise variance sigma^2, and does the following. For the given values of N,d, and sigma^2, it
 loops over M trials (M is 50 in the codes), where each trial is defined
 as generating a training dataset of size N and noise variance sigma^2 (by calling getData) and then fitting the
 data to a polynomial of degree d (by calling fitData). The computed E_in and E_out are respectively averaged
@@ -96,8 +96,7 @@ also averaged. The function then generates another large dataset with noise vari
 average MSE for the dataset fitted to the average polynomial. This MSE will be denoted by E_bias. The
 function outputs E_in;E_out and E_bias. <br/>
 The experiment will be run over all combination of N = {2,5,10,20,50,100,200}, d = {0,1,2,...,20} and sigma^2 = {0.01, 0.1,1}. There is a function ,combination(), that stores all the combinations in a list. <br/>.
-                                           Finally, I provide some plots that summarize the results of the experiments and provide some insights.
- 
+Finally, I provide some plots that summarize the results of the experiments and provide some insights.
                                            
                                            
  

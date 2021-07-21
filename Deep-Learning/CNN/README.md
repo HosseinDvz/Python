@@ -70,7 +70,7 @@ what if we were able to try our different options all together in one single lay
  &nbsp;&nbsp; In each VGG block, we stack convolution layers but here, in each inception module, we use convolution layers with different kernel sizes in parallel (we stack inception modules). This is a very simple and powerful architectural unit that allows the model to learn not only parallel filters of the same size but parallel filters of differing sizes, allowing learning at multiple scales. The convolution layers with filters of size 1x1, act as a tool for increase or decrease the number of feature maps.<br/>
 &nbsp;&nbsp; Here is the architecture of or GoogleNet network: <br/>
   <p align="center"><img src = "images/GoogelNet.png"><br/> 
-  As you see in the above picture, we send the input to diferent convolution layers with differnt number of filters and then concatenate the output of them. The convolution layers work in parallel. In our example we have just ne inception module and I could get 70% percent accuracy on CIFAR10 dataset. Here is the results of last iteration: <br/>
+As you see in the above picture, we send the input to different convolution layers with different numbers of filters and then concatenated the output of them. The convolution layers work in parallel. In our example, we have just one inception module and I could get 70% percent accuracy on the CIFAR10 dataset. Here are the results of the last iteration: <br/>
  
 ```
    

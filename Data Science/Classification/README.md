@@ -84,9 +84,34 @@ The function **load_glove(word_index)** takes our train dataset unique words, fi
   
 ### Definition of Recurrent Neural Network
 
- &nbsp;&nbsp; An recurrent neural network (RNN) is a time-invariant state-space representation of a causal system. The functions F and G take some parametric forms and are learned via training. An RNN can be drawn as a chain of recurrent units, as in the figure, where all units share the same (F,G).<br/>
+ &nbsp;&nbsp; A recurrent neural network (RNN) is a time-invariant state-space representation of a causal system. The functions F and G take some parametric forms and are learned via training. An RNN can be drawn as a chain of recurrent units, as in the figure, where all units share the same (F,G).<br/>
   
 <p align="center"><img src="images/RNN.jpg"><br/>
+  
+ Here we focus on *Deterministic RNN* (versus Stochastic RNN). <br/>
+ 
+ ## Definition (Linear RNN)
+ The recurrent unit of Linear RNN is defined by:
+ <p align="center"><img src="images/LinearRNN.jpg"><br/>
+   
+ ### Vanilla RNN
+  Vanilla RNN is the first “real” recurrent neural network (Elman, 1990). In earlier literature, Vanilla RNN was referred to simply as RNN. Modern literature takes RNN to mean the broad family of causal time-invariant systems under state-space representations, and refers to this first RNN as “Vanilla RNN”.Vanilla RNN has several variants, and we will take the following form.<br/>
+   
+   The recurrent unit of a Vanilla RNN is defined by:
+ <p align="center"><img src="images/VanillaRNN.jpg"><br/>
+   
+  
+  In an RNN, we have three different weight categories that shoould be updated during the learning process. See the following image:
+  <p align="center"><img src="images/RNNweight.jpg"><br/>
+  
+  W and v are different for every recurrent unit but u is same for all of them.
+
+  
+   
+  
+  
+ 
+
 
  
     

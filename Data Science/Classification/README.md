@@ -100,11 +100,13 @@ The function **load_glove(word_index)** takes our train dataset unique words, fi
    The recurrent unit of a Vanilla RNN is defined by:
  <p align="center"><img src="images/VanillaRNN.jpg"><br/>
    
- &nbsp;&nbsp; As you see in the above equation, the forward path in RNNs is inherently sequential; To calculate the y3, we need s3 which depends on s2, s2 depends on s1 which makes it very usefull for tasks that involve sequential inputs, such as speech and language where the order of inputs matters.
+ &nbsp;&nbsp; As you see in the above equation, the forward path in RNNs is inherently sequential; To calculate the y3, we need s3 which depends on s2, s2 depends on s1 which makes it very usefull for tasks that involve sequential inputs, such as speech and language or time series where the order of inputs matters.
   In an RNN, we have three different weight categories that should be updated during the learning process. See the following image:
   <p align="center"><img src="images/RNNweight.jpg"><br/>
   
-  Parameters (w,u,v) are shared by all time steps in the network which means the gradient at each output depends not only on the calculations of the current time step, but also the previous time steps. lets have 
+  &nbsp;&nbsp; Parameters (w,u,v) are shared by all time steps in the network which means the gradient at each output depends not only on the calculations of the current time step, but also the previous time steps. To compeletly understand to backward path which is called *Backpropagation Through Time (BPTT)* in RNNs visit [this](http://willwolf.io/2016/10/18/recurrent-neural-network-gradients-and-lessons-learned-therein/) website. There are many other websites but this one uses simple notations for an RNN with three states.<br/> 
+  &nbsp;&nbsp; The gradient vanishing/exploding problem of Vanilla RNN is a major limitation of RNN. This problem arises when the weights of recurrent units (W) are going to update.
+ 
 
   
    

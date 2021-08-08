@@ -104,8 +104,111 @@ The function **load_glove(word_index)** takes our train dataset unique words, fi
   In an RNN, we have three different weight categories that should be updated during the learning process. See the following image:
   <p align="center"><img src="images/RNNweight.jpg"><br/>
   
-  &nbsp;&nbsp; Parameters (w,u,v) are shared by all time steps in the network which means the gradient at each output depends not only on the calculations of the current time step, but also the previous time steps. To compeletly understand to backward path which is called *Backpropagation Through Time (BPTT)* in RNNs visit [this](http://willwolf.io/2016/10/18/recurrent-neural-network-gradients-and-lessons-learned-therein/) website. There are many other websites but this one uses simple notations for an RNN with three states.<br/> 
-  &nbsp;&nbsp; The gradient vanishing/exploding problem of Vanilla RNN is a major limitation of RNN. This problem arises when the weights of recurrent units (U) are going to be updated. 
+  &nbsp;&nbsp; Parameters (w,u,v) are **shared** by all time steps in the network which means the gradient at each output depends not only on the calculations of the current time step, but also the previous time steps. To compeletly understand to backward path which is called *Backpropagation Through Time (BPTT)* in RNNs visit [this](http://willwolf.io/2016/10/18/recurrent-neural-network-gradients-and-lessons-learned-therein/) website. There are many other websites but this one uses simple notations for an RNN with three states.<br/> 
+  &nbsp;&nbsp; The gradient vanishing/exploding problem of Vanilla RNN is a major limitation of RNN. This problem arises when the weights of recurrent units (U) are going to be updated. let see how. <br/>
+   
+ ### Vanishin/Exploding Gradient
+    
+ We defing the function F as following:<br/>
+   <p align="center"><img src="images/VanishF.jpg"><br/> 
+     
+ By *Theta*, we will denote the set all parameters of F and we also denote the function G as: <br>
+   <p align="center"><img src="images/VanishG.jpg"><br/> 
+     
+ Then the state-update equation of Vanilla RNN can be expressed as: <br/>
+   <p align="center"><img src="images/VanishStateGrad.jpg"><br/>
+     
+ Suppose that the input sequence x has length l. Let there be a loss function L(x) defined in terms of the corresponding output sequence y.
+ Usually, the loss L(x) decomposes into the sum of l terms, L1,L2,...,Ll, namely: <br/>
+    
+   <p align="center"><img src="images/VanishLoss.jpg"><br/>
+   
+  where each Lt depends on yt and hence depends st and xt.<br/>
+    
+  
+    
+#### Backpropagation Through Time (BPTT)
+   
+<p align="center"><img src="images/VanishLossDeri.jpg"><br/>
+    
+**Theta** is the set of all parameters (u,w,v). As we mentioned before, vanishing gradient happens when we want to update u , weights related to connetions between the hidden states. We inspect the derivative of hidden sate with respect to Theta which could be (u and w) <br/>
+   
+<p align="center"><img src="images/VanishStateUpfdate.jpg"><br/>
+  
+Have in mind that each state is a function of *u* and the its previous state which also is a function of same *u*.
+
+ For shorter notation we define the following:<br/>
+<p align="center"><img src="images/VanishShortNotation.jpg"><br/>
+    
+    
+ It is easy to verify that: <br/>
+
+<p align="center"><img src="images/VanishVerify.jpg"> 
+    
+    
+Now, we can re-write the eaquation <img src="images/VanishStateGrad.jpg"><br/> as following:<br/>
+    <p align="center"><img src="images/VanishRewrite.jpg"> 
+    
+Applying the above equation recursively and noting V1 = A1, we have<br/>
+<p align="center"><img src="images/VanishRecursion.jpg"> 
+    
+  Note that for each i, the summand <img src="images/VanishSummand.jpg">  is the scaling factor for the gradient signal. Now we focus on this scaling factor for i = 1.
+      
+ <p align="center"><img src="images/VanishFocus.jpg"> 
+    
+  Let *Upsilon* be the maximum norm that Diag (tanh′(h*t*)) may take.
+  Then if the largest eigen-value amplitude of UT is smaller than *1/Upsilon* :
+    
+   <p align="center"><img src="images/VanishFinalequ.jpg"><br/>
+     
+    
+&nbsp;&nbsp; In this case, for large t, the term <img src="images/VanishTerm.jpg">  decays exponentially to 0. Many numbers less than 1 will be multiplied together. This is referred to as **gradient vanishing**.<br/>
+ 
+ For gradient exploding, it may happen when we want to update *w* (i.e. *Theta* in above equations is *w*). In this case, <img src="images/VanishTerm.jpg"> grows exponentially.  There does not seem to be a rigorous proof about the sufficient condition of gradient exploding. But this appears to have been observed in practice.<br/>
+     
+ To intuitively understand what is going on,have a look [here](http://willwolf.io/2016/10/18/recurrent-neural-network-gradients-and-lessons-learned-therein/) at the number of multiplications when we have just three recurrent units.<br/>
+     
+ LSTM came to solve these two problems.
+ 
+   
+   
+
+    
+    
+ 
+ 
+   
+   
+   
+    
+    
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
  
 
   

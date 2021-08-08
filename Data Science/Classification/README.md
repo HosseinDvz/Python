@@ -116,7 +116,7 @@ The function **load_glove(word_index)** takes our train dataset unique words, fi
    <p align="center"><img src="images/VanishG.jpg"><br/> 
      
  Then the state-update equation of Vanilla RNN can be expressed as: <br/>
-   <p align="center"><img src="images/VanishStateGrad.jpg"><br/>
+   <p align="center"><img src="images/VanishStateUpfdate.jpg"><br/>
      
  Suppose that the input sequence x has length l. Let there be a loss function L(x) defined in terms of the corresponding output sequence y.
  Usually, the loss L(x) decomposes into the sum of l terms, L1,L2,...,Ll, namely: <br/>
@@ -131,9 +131,9 @@ The function **load_glove(word_index)** takes our train dataset unique words, fi
    
 <p align="center"><img src="images/VanishLossDeri.jpg"><br/>
     
-**Theta** is the set of all parameters (u,w,v). As we mentioned before, vanishing gradient happens when we want to update u , weights related to connetions between the hidden states. We inspect the derivative of hidden sate with respect to Theta which could be (u and w) <br/>
+**Theta** is the set of all parameters (u,w,v). As we mentioned before, vanishing gradient happens when we want to update u , weights related to connetions between the hidden states. We inspect the derivative of hidden sate with respect to Theta (which could be u and w) <br/>
    
-<p align="center"><img src="images/VanishStateUpfdate.jpg"><br/>
+<p align="center"><img src="images/VanishStateGrad.jpg"><br/>
   
 Have in mind that each state is a function of *u* and the its previous state which also is a function of same *u*.
 

@@ -118,8 +118,8 @@ The function **load_glove(word_index)** takes our train dataset unique words, fi
  Then the state-update equation of Vanilla RNN can be expressed as: <br/>
    <p align="center"><img src="images/VanishStateUpfdate.jpg"><br/>
      
- Suppose that the input sequence x has length l. Let there be a loss function L(x) defined in terms of the corresponding output sequence y.
- Usually, the loss L(x) decomposes into the sum of l terms, L1,L2,...,Ll, namely: <br/>
+ Suppose that the input sequence x has length L. Let there be a loss function L(x) defined in terms of the corresponding output sequence y.
+ Usually, the loss L(x) decomposes into the sum of L terms, L1,L2,...,Ll, namely: <br/>
     
    <p align="center"><img src="images/VanishLoss.jpg"><br/>
    

@@ -4,3 +4,8 @@
 
 ## Item-Based Collaborative Filtering
 &nbsp;Item-based collaborative filtering provides recommendations based on the similarity between items. This works in two stages: first finding the similarity scores between items, then ranking all scores to find the top-N similar item recommendations.
+
+An item-based recommender performs three tasks:
+- Generalize information about a “thing” or item.
+- Score all other items to find ones “like” this one.
+- Return ranked scores + items.

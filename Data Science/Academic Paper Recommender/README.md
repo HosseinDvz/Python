@@ -9,3 +9,8 @@ An item-based recommender performs three tasks:
 - Generalize information about a “thing” or item.
 - Score all other items to find ones “like” this one.
 - Return ranked scores + items.
+
+.
+.
+.
+
